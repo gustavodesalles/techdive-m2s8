@@ -1,0 +1,17 @@
+body {
+    background-color: #fffaf7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1, h3 {
+    color: #b93434;
+    margin: 20px;
+}
+
+.lista-itens{
+    width: 300px;
+    background-color: #ffe7e7;
+}

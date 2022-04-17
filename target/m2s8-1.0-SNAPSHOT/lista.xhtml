@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Listagem de ítens</title>
+    <h:outputStylesheet name="css/style.css" />
+</h:head>
+
+
+<h:body id="body">
+
+    <div class="header">
+        <h1>Listagem de ítens</h1>
+    </div>
+
+    <div class="main">
+
+        <h:form id="form-cadastro-item">
+            <h:panelGrid id="cadastro-item" columns="9">
+
+            <h4>Item: </h4>
+            <h:panelGroup>
+                <h:inputText id="input-item" value="#{listaBean.item}"
+                             required="true" requiredMessage="#{msg['campo.obrigatorio']}"/>
+                <h:message for="input-item" style="font-size: small;"/>
+            </h:panelGroup>
+
+            <h4>Quantidade: </h4>
+            <h:panelGroup>
+                <h:inputText id="input-quantidade" value="#{listaBean.quantidade}"
+                             required="true" requiredMessage="#{msg['campo.obrigatorio']}"
+                             converterMessage="#{msg['valor.invalido']}"
+                             validatorMessage="#{msg['valor.menor']}" style="width: 50px">
+                    <f:convertNumber integerOnly="true"/>
+                    <f:validateLongRange minimum="1"/>
+                </h:inputText>
+                <h:message for="input-quantidade" style="font-size: small;"/>
+            </h:panelGroup>
+
+            <h4>Medida: </h4>
+            <h:selectOneMenu value="#{listaBean.medida}">
+                <f:selectItem itemValue="unidade(s)" itemLabel="Unidades"/>
+                <f:selectItem itemValue="kilo(s)" itemLabel="Kilos"/>
+                <f:selectItem itemValue="litro(s)" itemLabel="Litros"/>
+                <f:selectItem itemValue="pacote(s)" itemLabel="Pacotes"/>
+                <f:selectItem itemValue="garrafa(s)" itemLabel="Garrafas"/>
+            </h:selectOneMenu>
+            <h:commandButton value="+" process="@this"
+                             action="#{listaBean.adicionar}"/>
+        </h:panelGrid>
+        </h:form>
+
+        <h:form id="form-remocao-item">
+            <h:panelGrid id="remocao-item">
+                <div class="p-col-12 p-md-6 p-lg-4 p-xl-3">
+                    <h:selectManyListbox size="10" id="basic" style="width: 300px" value="#{listaBean.itensSelecionados}">
+                        <f:selectItems value="#{listaBean.lista}"/>
+                    </h:selectManyListbox>
+                    <h:commandButton value="-" process="@this"
+                                     action="#{listaBean.remover}"/>
+                </div>
+            </h:panelGrid>
+        </h:form>
+
+    </div>
+
+</h:body>
+</html>
