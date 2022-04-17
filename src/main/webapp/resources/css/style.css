@@ -11,7 +11,14 @@ h1, h3 {
     margin: 20px;
 }
 
-.lista-itens{
-    width: 300px;
-    background-color: #ffe7e7;
+.tabela-itens {
+    border-collapse:collapse;
+    border:1px solid #000000;
+}
+
+.tabela-itens-header {
+    text-align:center;
+    background:none repeat scroll 0 0 #B5B5B5;
+    border-bottom:1px solid #000000;
+    padding:2px;
 }

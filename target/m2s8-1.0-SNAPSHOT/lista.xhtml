@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="pt-BR"
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
@@ -12,7 +13,7 @@
 </h:head>
 
 
-<h:body id="body">
+<h:body>
 
     <div class="header">
         <h1>Listagem de ítens</h1>
@@ -25,14 +26,14 @@
 
             <h4>Item: </h4>
             <h:panelGroup>
-                <h:inputText id="input-item" value="#{listaBean.item}"
+                <h:inputText id="input-item" value="#{listaBean.item.descricao}"
                              required="true" requiredMessage="#{msg['campo.obrigatorio']}"/>
                 <h:message for="input-item" style="font-size: small;"/>
             </h:panelGroup>
 
             <h4>Quantidade: </h4>
             <h:panelGroup>
-                <h:inputText id="input-quantidade" value="#{listaBean.quantidade}"
+                <h:inputText id="input-quantidade" value="#{listaBean.item.quantidade}"
                              required="true" requiredMessage="#{msg['campo.obrigatorio']}"
                              converterMessage="#{msg['valor.invalido']}"
                              validatorMessage="#{msg['valor.menor']}" style="width: 50px">
@@ -43,7 +44,7 @@
             </h:panelGroup>
 
             <h4>Medida: </h4>
-            <h:selectOneMenu value="#{listaBean.medida}">
+            <h:selectOneMenu value="#{listaBean.item.medida}">
                 <f:selectItem itemValue="unidade(s)" itemLabel="Unidades"/>
                 <f:selectItem itemValue="kilo(s)" itemLabel="Kilos"/>
                 <f:selectItem itemValue="litro(s)" itemLabel="Litros"/>
@@ -67,6 +68,7 @@
             </h:panelGrid>
         </h:form>
 
+        <a href="impressao.xhtml">Ir para a página de impressão</a>
     </div>
 
 </h:body>
